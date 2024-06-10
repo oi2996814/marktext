@@ -1,4 +1,4 @@
-import fs from 'fs-extra'
+import fs from 'fs'
 import path from 'path'
 import { isFile, isFile2, isSymbolicLink } from './index'
 
@@ -13,6 +13,7 @@ export const MARKDOWN_EXTENSIONS = Object.freeze([
   'mdwn',
   'mdtxt',
   'mdtext',
+  'mdx',
   'text',
   'txt'
 ])

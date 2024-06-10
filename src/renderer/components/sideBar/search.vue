@@ -131,12 +131,14 @@ export default {
     }
   },
   created () {
-    this.keyword = this.searchMatches.value
-    bus.$on('findInFolder', this.handleFindInFolder)
-    if (this.keyword.length > 0 && this.searcherRunning === false) {
-      this.searcherRunning = true
-      this.search()
-    }
+    this.$nextTick(() => {
+      this.keyword = this.searchMatches.value
+      bus.$on('findInFolder', this.handleFindInFolder)
+      if (this.keyword.length > 0 && this.searcherRunning === false) {
+        this.searcherRunning = true
+        this.search()
+      }
+    })
   },
   computed: {
     ...mapState({
@@ -417,9 +419,18 @@ export default {
     flex-direction: column;
     justify-content: space-around;
     padding-bottom: 100px;
+    & .no-data {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
     & .no-data svg {
       fill: var(--themeColor);
       width: 120px;
+    }
+    & .no-data .button-primary {
+      display: block;
+      margin-top: 20px;
     }
   }
 </style>
